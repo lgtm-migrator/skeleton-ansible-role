@@ -34,6 +34,7 @@ galaxy_info:
       versions:
         - bionic
         - focal
+        - jammy
   role_name: skeleton
 
 dependencies: []
