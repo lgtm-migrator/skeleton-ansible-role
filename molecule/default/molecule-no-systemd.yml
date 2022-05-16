@@ -33,6 +33,8 @@ platforms:
     image: fedora:34
   - name: fedora35
     image: fedora:35
+  - name: fedora36
+    image: fedora:36
   - name: ubuntu18
     image: ubuntu:bionic
   - name: ubuntu20
