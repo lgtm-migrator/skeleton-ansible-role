@@ -107,6 +107,7 @@ jobs:
       fail-fast: false
       matrix:
         scenario:
+          - arm64
           - default
     runs-on: ubuntu-latest
     steps:
