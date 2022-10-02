@@ -17,41 +17,72 @@ lint: |
   flake8
 platforms:
   - image: amazonlinux:2
-    name: amazonlinux2
+    name: amazonlinux2-amd64
+    platform: amd64
+  - image: amazonlinux:2
+    name: amazonlinux2-arm64
+    platform: arm64
+  - dockerfile: Dockerfile_debian_9.j2
+    image: debian:stretch-slim
+    name: debian9-amd64
     platform: amd64
   - dockerfile: Dockerfile_debian_9.j2
     image: debian:stretch-slim
-    name: debian9
+    name: debian9-arm64
+    platform: arm64
+  - image: debian:buster-slim
+    name: debian10-amd64
     platform: amd64
   - image: debian:buster-slim
-    name: debian10
+    name: debian10-arm64
+    platform: arm64
+  - image: debian:bullseye-slim
+    name: debian11-amd64
     platform: amd64
   - image: debian:bullseye-slim
-    name: debian11
+    name: debian11-arm64
+    platform: arm64
+  - image: debian:bookworm-slim
+    name: debian12-amd64
     platform: amd64
   - image: debian:bookworm-slim
-    name: debian12
+    name: debian12-arm64
+    platform: arm64
+  - image: kalilinux/kali-rolling
+    name: kali-amd64
     platform: amd64
   - image: kalilinux/kali-rolling
-    name: kali
+    name: kali-arm64
+    platform: arm64
+  - image: fedora:34
+    name: fedora34-amd64
     platform: amd64
   - image: fedora:34
-    name: fedora34
+    name: fedora34-arm64
+    platform: arm64
+  - image: fedora:35
+    name: fedora35-amd64
     platform: amd64
   - image: fedora:35
-    name: fedora35
+    name: fedora35-arm64
+    platform: arm64
+  - image: ubuntu:bionic
+    name: ubuntu18-amd64
     platform: amd64
   - image: ubuntu:bionic
-    name: ubuntu18
+    name: ubuntu18-arm64
+    platform: arm64
+  - image: ubuntu:focal
+    name: ubuntu20-amd64
     platform: amd64
   - image: ubuntu:focal
-    name: ubuntu20
-    platform: amd64
+    name: ubuntu20-arm64
+    platform: arm64
 provisioner:
   name: ansible
   inventory:
     host_vars:
-      debian9:
+      debian9-amd64:
         # auto_legacy is still the default behavior until Ansible 2.12
         # is released, but Molecule overrides this and forces the use
         # of auto.
@@ -77,6 +108,8 @@ provisioner:
         # * https://docs.ansible.com/ansible/latest/reference_appendices/interpreter_discovery.html#interpreter-discovery
         # * https://github.com/ansible/ansible/blob/v2.10.1/lib/ansible/config/base.yml#L1492-L1542
         # * https://github.com/ansible/ansible/blob/v2.10.1/lib/ansible/executor/interpreter_discovery.py
+        ansible_python_interpreter: auto_legacy
+      debian9-arm64:
         ansible_python_interpreter: auto_legacy
 scenario:
   name: default
