@@ -11,10 +11,21 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+<<<<<<< HEAD
     ignore:
       - dependency-name: actions/cache
       - dependency-name: actions/checkout
       - dependency-name: actions/setup-python
+=======
+    # ignore:
+    #   # Managed by cisagov/skeleton-generic
+    #   - dependency-name: actions/cache
+    #   - dependency-name: actions/checkout
+    #   - dependency-name: actions/setup-go
+    #   - dependency-name: actions/setup-python
+    #   - dependency-name: hashicorp/setup-terraform
+    #   - dependency-name: mxschmitt/action-tmate
+>>>>>>> bb9c2a0772c46ed30d1f1f5a0e0a40ea57898c5c
 
   - package-ecosystem: "pip"
     directory: "/"
